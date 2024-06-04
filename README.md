@@ -2,6 +2,14 @@
 
 Este repositório contém a implementação do algoritmo de Karger para a unidade 3 de Grafos.
 
+## Notas
+
+
+A pasta `test_cases` é necessária para a execução do programa, pois contém os casos de teste.
+
+
+Caso se opte pela execução com o arquivo `main.exe`, recomenda-se baixar o repositório como um todo.
+
 ## Execução
 
 A execução pode ser realizada de duas maneiras:
