@@ -129,8 +129,24 @@ def run_karger_multiple_times(graph, num_trials):
     execution_time = end_time - start_time # Calcula o tempo de execução
     return min_cut, min_cut_count, execution_time
 
+
+
+def choose_iterations():
+    default = int(math.comb(CONST_N_VERTICES, 2) * math.log(CONST_N_VERTICES))
+    user_choice = input(f"Pressione Enter para usar o número padrão de iterações ({default}), ou digite outro número para escolher o número de iterações: ")
+    if user_choice:
+        try:
+            num_iterations = int(user_choice)
+            if num_iterations <= 0:
+                raise ValueError
+            return num_iterations
+        except ValueError:
+            print("Entrada inválida. Usando o número padrão de iterações.")
+    return default
+
+
 # Número de vezes que o algoritmo será executado. O recomendado é: n^2 * ln(n); n = |V| de G = (V, E).
-num_trials = int(CONST_N_VERTICES ** 2 * math.log(CONST_N_VERTICES))
+num_trials = int(choose_iterations())
 
 print(f"-----------------------------------------------------\n|V| = {CONST_N_VERTICES};\t {num_trials} ITERAÇÕES SERÃO FEITAS.\nProcessando...")
 min_cut, min_cut_count, execution_time = run_karger_multiple_times(dict_adj, num_trials)
